@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+:root {
+    font-family: 'Inter', sans-serif;
+    --cinza-claro-fraco: #f9f9f9;
+    --cinza-claro-fraco-2: #f6f6f6;
+    --cinza-claro-forte: #bdbec0;
+    --preto: #060709;
+    --cinza-escuro-forte: #363e3c;
+    --cinza-escuro-fraco: #292d36;
+    --branco: #ffffff;
+    --turquesa: #26fcd5;
+    --vermelho: #f37a7a;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cinza-escuro-fraco);
+}
+
+.container {
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+    width: 200px;
+    height: 350px;
+    background-color: var(--branco);
+    border-radius: 15px;
+    color: var(--cinza-escuro-fraco);
+}
+
+.display {
+    background-color: var(--branco);
+    border-radius: 15px;
+}
+
+.switcher {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    background-color: var(--branco);
+    border-radius: 15px;
+}
+
+.switcher > button {
+    background-color: var(--cinza-claro-fraco);
+    cursor: pointer;
+}
+
+.light-mode, .night-mode {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.light-mode {
+    border: 1px solid var(--cinza-claro-fraco);
+    border-radius: 8px 0 0 8px;
+    padding: 8px 10px 9px 15px;
+}
+
+.night-mode {
+    border: 1px solid var(--cinza-claro-fraco);
+    border-radius: 0 8px 8px 0;
+    padding: 8px 15px 9px 10px;
+}
+
+#sun, #moon {
+    width: 10px;
+}
+
+.operation {
+    background-color: var(--branco);
+    margin: 60px 0 3px 0;
+    text-align: end;
+}
+
+.numbers-operation {
+    font-weight: 400;
+    padding-right: 12px;
+}
+
+.results {
+    background-color: var(--branco);
+    margin: 1px 0 10px 0;
+    text-align: end;
+}
+
+.numbers-results {
+    font-weight: 600;
+    font-size: 25px;
+    padding-right: 10px;
+}
+
+.keys {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    background-color: var(--cinza-claro-fraco);
+    padding: 18px 12px;
+    border: 1px solid var(--cinza-claro-fraco);
+    border-radius: 15px;
+}
+
+.keys > button {
+    border: 1px solid var(--cinza-claro-fraco-2);
+    border-radius: 8px;
+    padding: 5px 6px;
+    background-color: var(--cinza-claro-fraco-2);
+    font-weight: 500;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#transform-buttons {
+    color: var(--turquesa);
+}
+
+#operator-buttons {
+    color: var(--vermelho);
+    font-size: 16px;
+}
+
+
+button:hover {
+    background-color: lightpink;
+}
+
+button:active {
+    background-color: blue;
+}
