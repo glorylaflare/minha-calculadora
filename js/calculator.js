@@ -1,6 +1,20 @@
+/*
+Lista de bugs a serem corrigidos:
+
+- bug de adicionar múltiplos sinais no campo de operação
+- bug de calcular mesmo sem números ou sinais inseridos no campo de operação
+
+Lista de funções a serem adicionadas:
+- modo noturno funcional
+- melhorar paleta de cores do hover e do active no CSS
+- fixar casas decimais em no máximo 4 números.
+*/
+
+
 const calculator = document.querySelector('.container-calculator')
 const display = document.querySelector('.numbers-results')
 const keys = document.querySelector('.keys')
+const operation = document.querySelector('.numbers-operation')
 
 keys.addEventListener('click', e => {
     if(e.target.matches('button')) {
@@ -8,6 +22,7 @@ keys.addEventListener('click', e => {
         const action = key.dataset.action
         const keyContent = key.textContent
         const displayedNum = display.textContent
+        const showOperation = operation.textContent
         const previousKeyType = calculator.dataset.previousKeyType
 
         if(!action) {
@@ -18,6 +33,12 @@ keys.addEventListener('click', e => {
             } else {
                 display.textContent = displayedNum + keyContent
             }
+
+            if(showOperation === '0' || previousKeyType === 'calculate') {
+                operation.textContent = keyContent
+            } else {
+                operation.textContent = showOperation + keyContent
+            }
         }
 
         if(action === 'decimal') {
@@ -25,8 +46,11 @@ keys.addEventListener('click', e => {
 
             if(!displayedNum.includes('.')){
                 display.textContent = displayedNum + '.'
+                operation.textContent = showOperation + '.'
+
             } else if(previousKeyType === 'operator' || previousKeyType === 'calculate') {
                 display.textContent = '0.'
+                operation.textContent = '0.'
             }
         }
         
@@ -41,6 +65,8 @@ keys.addEventListener('click', e => {
 
         if(action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide') {
             calculator.dataset.previousKeyType = 'operator'
+
+            operation.textContent = showOperation + keyContent
 
             let firstValue = calculator.dataset.firstValue
             const operator = calculator.dataset.operator
@@ -57,10 +83,6 @@ keys.addEventListener('click', e => {
             } else {
                 calculator.dataset.firstValue = displayedNum
             }
-            
-            // key.classList.add('is-depressed') //transformar o botão em inativo até que aperte um outro número
-            // Array.from(key.parentNode.children)
-            //   .forEach(k => k.classList.remove('is-depressed'))
         }
 
         if(action === 'calculate') {
@@ -76,6 +98,8 @@ keys.addEventListener('click', e => {
                     secondValue = calculator.dataset.modValue
                 }
                 display.textContent = calculate(firstValue, operator, secondValue)
+
+                operation.textContent = calculate(firstValue, operator, secondValue)
             }
             calculator.dataset.modValue = secondValue
         }
@@ -90,16 +114,50 @@ keys.addEventListener('click', e => {
                 calculator.dataset.previousKeyType = ''
             }
             display.textContent = 0
+            operation.textContent = 0
         }
 
         if(action === 'signal') {
             calculator.dataset.previousKeyType = 'signal'
             
-            if(!displayedNum.includes('-')){
-                display.textContent = '-' + displayedNum
-            } else {
-                display.textContent = displayedNum * (-1)
+            if(displayedNum !== '0') {
+                if(!displayedNum.includes('-')){
+                    display.textContent = '-' + displayedNum
+                } else {
+                    display.textContent = displayedNum * (-1)
+                }
             }
+
+            if(showOperation !== '0') {
+                if(!showOperation.includes('-')){
+                    operation.textContent = '-' + showOperation
+                } else {
+                    operation.textContent = showOperation * (-1)
+                }
+            }
+        }
+
+        if(action === 'percent') {
+            calculator.dataset.previousKeyType = 'percent'
+
+            display.textContent = displayedNum / 100
+            operation.textContent = showOperation + "%"
+        }
+        
+        if(action === 'delete'){
+            calculator.dataset.previousKeyType = 'delete'
+
+            if(displayedNum !== '0' && displayedNum.length > 1) {
+               display.textContent = displayedNum.slice(0, -1)
+            } else if (displayedNum.length === '1') {
+                display.textContent = 0
+            }
+
+            if(showOperation !== '0' && showOperation.length > 1) {
+                operation.textContent = showOperation.slice(0, -1)
+             } else if (showOperation.length === '1') {
+                 operation.textContent = 0
+             }
         }
     }
 })
@@ -109,7 +167,7 @@ keys.addEventListener('click', e => {
 clear
 signal
 percent
-return
+delete
 decimal
 calculate
 
