@@ -17,8 +17,7 @@
 
 </head>
     <body>
-        <div class="container">
-
+        <div class="container-calculator">
             <div class="display">
                 <div class="switcher">
                     <button class="light-mode">
@@ -37,33 +36,34 @@
             </div>
 
             <div class="keys">
-                <button id="transform-buttons">AC</button>
-                <button id="transform-buttons">+/−</button>
-                <button id="transform-buttons">%</button>
-                <button id="operator-buttons">÷</button>
+                <button id="transform-buttons" data-action="clear">AC</button>
+                <button id="transform-buttons" data-action="signal">+/−</button>
+                <button id="transform-buttons" data-action="percent">%</button>
+                <button id="operator-buttons" data-action="divide">÷</button>
         
                 <button>7</button>
                 <button>8</button>
                 <button>9</button>
-                <button id="operator-buttons">×</button>
+                <button id="operator-buttons" data-action="multiply">×</button>
                 
                 <button>4</button>
                 <button>5</button>
-                <button>6</button>
-                <button id="operator-buttons">−</button>
+                <button >6</button>
+                <button id="operator-buttons" data-action="subtract">−</button>
                 
                 <button>1</button>
                 <button>2</button>
                 <button>3</button>
-                <button id="operator-buttons">＋</button>
+                <button id="operator-buttons" data-action="add">＋</button>
                 
-                <button>⟲</button>
+                <button data-action="return">CE</button>
                 <button>0</button>
-                <button>.</button>
-                <button id="operator-buttons">＝</button>
+                <button data-action="decimal">.</button>
+                <button id="operator-buttons" data-action="calculate">＝</button>
             </div>
         </div>
         
-        <script src="./js/index.js"></script>
+        <script src="./js/eventListener.js"></script>
+        <script src="./js/calculator.js"></script>
     </body>
 </html>

@@ -23,7 +23,7 @@ body {
     background-color: var(--cinza-escuro-fraco);
 }
 
-.container {
+.container-calculator {
     align-items: center;
     margin: auto;
     margin-top: 20px;
