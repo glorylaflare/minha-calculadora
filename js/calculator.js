@@ -149,13 +149,13 @@ keys.addEventListener('click', e => {
 
             if(displayedNum !== '0' && displayedNum.length > 1) {
                display.textContent = displayedNum.slice(0, -1)
-            } else if (displayedNum.length === '1') {
+            } else if (displayedNum.length == 1) {
                 display.textContent = 0
             }
 
             if(showOperation !== '0' && showOperation.length > 1) {
                 operation.textContent = showOperation.slice(0, -1)
-             } else if (showOperation.length === '1') {
+             } else if (showOperation.length == 1) {
                  operation.textContent = 0
              }
         }
