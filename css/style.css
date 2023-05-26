@@ -1,26 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
 
-:root {
-    font-family: 'Inter', sans-serif;
-    --cinza-claro-fraco: #f9f9f9;
-    --cinza-claro-fraco-2: #f6f6f6;
-    --cinza-claro-forte: #bdbec0;
-    --preto: #060709;
-    --cinza-escuro-forte: #363e3c;
-    --cinza-escuro-fraco: #292d36;
-    --branco: #ffffff;
+:root[data-theme='light'] {
+    --base: #ffffff;
+    --base-2: #f9f9f9;
+    --button-color: #f6f6f6;
+    --fundo: linear-gradient(38deg, rgba(3,1,37,1) 0%, rgba(2,12,52,1) 43%, rgba(0,70,84,1) 100%);
+    --font: #292d36;
     --turquesa: #26fcd5;
     --vermelho: #f37a7a;
+    --rosa-claro: #ffb6c1;
+}
+
+:root[data-theme='dark'] {
+    --base: #22252d;
+    --base-2: #292d36;
+    --button-color: #2c3038;
+    --fundo: linear-gradient(38deg, rgba(187,200,144,1) 0%, rgba(127,129,104,1) 43%, rgba(94,96,48,1) 100%);
+    --font: #ffffff;
+    --turquesa: #26fcd5;
+    --vermelho: #f37a7a;
+    --rosa-claro: #ffb6c1;
 }
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    background-color: var(--cinza-escuro-fraco);
+    background: var(--fundo);
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .container-calculator {
@@ -29,13 +41,13 @@ body {
     margin-top: 20px;
     width: 200px;
     height: 350px;
-    background-color: var(--branco);
+    background-color: var(--base);
     border-radius: 15px;
-    color: var(--cinza-escuro-fraco);
+    color: var(--font);
 }
 
 .display {
-    background-color: var(--branco);
+    background-color: var(--base);
     border-radius: 15px;
 }
 
@@ -44,12 +56,13 @@ body {
     justify-content: center;
     align-items: center;
     padding-top: 8px;
-    background-color: var(--branco);
+    background-color: var(--base);
     border-radius: 15px;
+    transform: --transition;
 }
 
 .switcher > button {
-    background-color: var(--cinza-claro-fraco);
+    background-color: var(--base-2);
     cursor: pointer;
 }
 
@@ -62,13 +75,13 @@ body {
 }
 
 .light-mode {
-    border: 1px solid var(--cinza-claro-fraco);
+    border: 1px solid var(--base-2);
     border-radius: 8px 0 0 8px;
     padding: 8px 10px 9px 15px;
 }
 
 .night-mode {
-    border: 1px solid var(--cinza-claro-fraco);
+    border: 1px solid var(--base-2);
     border-radius: 0 8px 8px 0;
     padding: 8px 15px 9px 10px;
 }
@@ -78,7 +91,7 @@ body {
 }
 
 .operation {
-    background-color: var(--branco);
+    background-color: var(--base);
     margin: 60px 0 3px 0;
     text-align: end;
 }
@@ -89,7 +102,7 @@ body {
 }
 
 .results {
-    background-color: var(--branco);
+    background-color: var(--base);
     margin: 1px 0 10px 0;
     text-align: end;
 }
@@ -104,17 +117,18 @@ body {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(4, 1fr);
-    background-color: var(--cinza-claro-fraco);
+    background-color: var(--base-2);
     padding: 18px 12px;
-    border: 1px solid var(--cinza-claro-fraco);
+    border: 1px solid var(--base-2);
     border-radius: 15px;
 }
 
 .keys > button {
-    border: 1px solid var(--cinza-claro-fraco-2);
+    color: var(--font);
+    border: 1px solid var(--button-color);
     border-radius: 8px;
     padding: 5px 6px;
-    background-color: var(--cinza-claro-fraco-2);
+    background-color: var(--button-color);
     font-weight: 500;
     font-size: 12px;
     cursor: pointer;
@@ -129,11 +143,14 @@ body {
     font-size: 16px;
 }
 
-
-button:hover {
-    background-color: lightpink;
+.keys > button:active {
+    background-color: var(--rosa-claro);
 }
 
-button:active {
-    background-color: blue;
+.light-mode:active {
+    background-color: yellow;
+}
+
+.night-mode:active {
+    background-color: skyblue;
 }

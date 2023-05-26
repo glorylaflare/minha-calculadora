@@ -1,10 +1,3 @@
-/*
-Lista de funções a serem adicionadas:
-- modo noturno funcional
-- melhorar paleta de cores do hover e do active no CSS
-*/
-
-
 const calculator = document.querySelector('.container-calculator')
 const display = document.querySelector('.numbers-results')
 const keys = document.querySelector('.keys')
@@ -169,8 +162,13 @@ keys.addEventListener('click', e => {
         if(action === 'percent') {
             calculator.dataset.previousKeyType = 'percent'
 
-            display.textContent = displayedNum / 100
-            operation.textContent = showOperation + "%"
+            if(previousKeyType === 'percent') {
+                display.textContent = displayedNum
+                operation.textContent = showOperation
+            } else {
+                display.textContent = displayedNum / 100
+                operation.textContent = showOperation + "%"
+            }
         }
         
         if(action === 'delete'){
