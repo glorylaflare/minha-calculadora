@@ -1,13 +1,7 @@
 /*
-Lista de bugs a serem corrigidos:
-
-- bug de adicionar múltiplos sinais no campo de operação
-- bug de calcular mesmo sem números ou sinais inseridos no campo de operação
-
 Lista de funções a serem adicionadas:
 - modo noturno funcional
 - melhorar paleta de cores do hover e do active no CSS
-- fixar casas decimais em no máximo 4 números.
 */
 
 
@@ -57,21 +51,56 @@ keys.addEventListener('click', e => {
         const calculate = (n1, operator, n2) => {
             const firstNum = parseFloat(n1)
             const secondNum = parseFloat(n2)
-            if(operator === 'add') return firstNum + secondNum
-            if(operator === 'subtract') return firstNum - secondNum
-            if(operator === 'multiply') return firstNum * secondNum
-            if(operator === 'divide') return firstNum / secondNum
+
+            const add = firstNum + secondNum
+            const sub = firstNum - secondNum
+            const mult = firstNum * secondNum
+            const divd = firstNum / secondNum
+
+            if(operator === 'add') {
+                if(!Number.isInteger(add)){
+                    return add.toFixed(2)
+                } else {
+                    return add
+                }
+            }
+            if(operator === 'subtract') {
+                if(!Number.isInteger(sub)){
+                    return sub.toFixed(2)
+                } else {
+                    return sub
+                }
+            }
+            if(operator === 'multiply') {
+                if(!Number.isInteger(mult)){
+                    return mult.toFixed(2)
+                } else {
+                    return mult
+                }
+            }
+            if(operator === 'divide') {
+                if(!Number.isInteger(divd)){
+                    return divd.toFixed(2)
+                } else {
+                    return divd
+                }
+            }
         }
 
         if(action === 'add' || action === 'subtract' || action === 'multiply' || action === 'divide') {
             calculator.dataset.previousKeyType = 'operator'
 
-            operation.textContent = showOperation + keyContent
-
+            
             let firstValue = calculator.dataset.firstValue
             const operator = calculator.dataset.operator
             const secondValue = displayedNum
             
+            if(previousKeyType === 'operator') {
+                operation.textContent = showOperation.replace(/.$/, keyContent)
+            } else {
+                operation.textContent = showOperation + keyContent
+            }
+
             calculator.dataset.firstValue = displayedNum
             calculator.dataset.operator = action
             
