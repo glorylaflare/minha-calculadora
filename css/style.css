@@ -38,28 +38,37 @@ body {
 }
 
 .container-calculator {
-    align-items: center;
+    position: relative;
+    top: 50px;
+    
+    width: 250px;
+    height: 500px;
     margin: auto;
-    margin-top: 20px;
-    width: 200px;
-    height: 350px;
+    
+    align-items: center;
     background-color: var(--base);
-    border-radius: 15px;
+    border-radius: 30px;
     color: var(--font);
 }
 
 .display {
+    justify-content: center;
+    align-items: center;
+
     background-color: var(--base);
-    border-radius: 15px;
+    border-radius: 30px;
 }
 
 .switcher {
+    width: 70%;
+    padding-top: 20px;
+    margin-left: 40px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 8px;
+
     background-color: var(--base);
-    border-radius: 15px;
     transform: --transition;
 }
 
@@ -69,8 +78,9 @@ body {
 }
 
 .light-mode, .night-mode {
-    width: 20px;
-    height: 20px;
+    width: 35px;
+    height: 35px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -78,30 +88,31 @@ body {
 
 .light-mode {
     border: 1px solid var(--base-2);
-    border-radius: 8px 0 0 8px;
+    border-radius: 30px 0 0 30px;
     padding: 8px 10px 9px 15px;
 }
 
 .night-mode {
     border: 1px solid var(--base-2);
-    border-radius: 0 8px 8px 0;
+    border-radius: 0 30px 30px 0;
     padding: 8px 15px 9px 10px;
 }
 
 #sun, #moon {
-    width: 10px;
+    width: 18px;
 }
 
 .operation {
     background-color: var(--base);
-    margin: 60px 0 3px 0;
-    text-align: end;
+    margin: 125px 0 3px 0;
 }
 
 .numbers-operation {
+    text-align: end;
     font-weight: 400;
     padding-right: 12px;
     color: var(--font-2);
+    font-size: 25px;
 }
 
 .results {
@@ -112,7 +123,7 @@ body {
 
 .numbers-results {
     font-weight: 600;
-    font-size: 25px;
+    font-size: 45px;
     padding-right: 10px;
 }
 
@@ -123,7 +134,7 @@ body {
     background-color: var(--base-2);
     padding: 18px 12px;
     border: 1px solid var(--base-2);
-    border-radius: 15px;
+    border-radius: 30px;
 }
 
 .keys > button {
